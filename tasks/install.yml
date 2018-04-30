@@ -1,0 +1,15 @@
+---
+- name: "download gobackup binary"
+  get_url:
+    url: "{{ gobackup_url }}"
+    dest: "/tmp/gobackup.tar.gz"
+    owner: "{{ gobackup_user }}"
+  become_user: "{{ gobackup_user }}"
+
+- name: "install gobackup"
+  unarchive:
+    remote_src: yes
+    src: "/tmp/gobackup.tar.gz"
+    dest: "{{ gobackup_bin_path }}"
+    mode: 0755
+    owner: root

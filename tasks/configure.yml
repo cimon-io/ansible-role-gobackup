@@ -1,0 +1,31 @@
+---
+- name: "create gobackup directories"
+  file:
+    path:  "{{ item }}"
+    owner: "{{ gobackup_user }}"
+    group: "{{ gobackup_user }}"
+    state: directory
+  with_items:
+    - "{{ gobackup_data_path }}"
+    - "{{ gobackup_config_path }}"
+
+- name: "configure backup models"
+  template:
+    src:   gobackup.yml.j2
+    dest:  "{{ gobackup_config_path }}/gobackup.yml"
+    owner: "{{ gobackup_user }}"
+    group: "{{ gobackup_user }}"
+    mode:  0600
+
+- name: "configure cron"
+  cron:
+    name:    "Backup job: {{ item.name }}"
+    minute:  "{{ item.minute  | default(15) }}"
+    hour:    "{{ item.hour    | default(4) }}"
+    day:     "{{ item.day     | default(omit) }}"
+    weekday: "{{ item.weekday | default(omit) }}"
+    user:    "{{ gobackup_user }}"
+    job:     "{{ gobackup_bin_path }}/gobackup perform --model {{ item.name }}"
+  with_items:
+    - "{{ gobackup_cron }}"
+  when: gobackup_cron | length > 0

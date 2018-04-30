@@ -1,0 +1,53 @@
+---
+gobackup_user: "deploy"
+gobackup_version: "0.6.2"
+gobackup_url: "https://github.com/huacnlee/gobackup/releases/download/{{ gobackup_version }}/gobackup-linux-amd64.tar.gz"
+
+gobackup_bin_path: "/usr/local/bin"
+gobackup_config_path: "/etc/gobackup"
+gobackup_data_path: "/var/backups"
+
+gobackup_cron: {}
+# name: model_name
+# minute:
+# hour:
+# day:
+# weekday:
+gobackup_config: {}
+#models:
+#  model_name1:
+#    compress_with:
+#      type: tgz
+#    store_with:
+#      type: ftp
+#      host: ftp.your-host.com
+#      username: ...
+#      password: ...
+#    databases:
+#      my_app1:
+#        type: mysql
+#        host: localhost
+#        database: my_app_production
+#        username: root
+#      my_app_redis1:
+#        type: redis
+#        host: localhost
+#        port: 6379
+#        mode: sync
+#      my_app_redis2:
+#        type: redis
+#        host: localhost
+#        port: 6380
+#        mode: sync
+#    archive:
+#      includes:
+#        - /home/git/.ssh/
+#        - /etc/mysql/my.conf
+#        - /etc/nginx/nginx.conf
+#        - /etc/nginx/conf.d
+#        - /etc/redis/redis.conf
+#        - /etc/logrotate.d/
+#      excludes:
+#        - /home/ubuntu/.ssh/known_hosts
+#        - /etc/logrotate.d/syslog
+#

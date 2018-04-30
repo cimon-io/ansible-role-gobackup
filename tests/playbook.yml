@@ -1,0 +1,7 @@
+---
+- hosts: all
+  roles:
+    - role: ansible-role-gobackup
+      gobackup_user: root
+  vars_files:
+    - ./vars.yml
