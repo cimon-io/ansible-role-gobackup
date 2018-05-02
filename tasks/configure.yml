@@ -19,13 +19,11 @@
 
 - name: "configure cron"
   cron:
-    name:    "Backup job: {{ item.name }}"
-    minute:  "{{ item.minute  | default(15) }}"
-    hour:    "{{ item.hour    | default(4) }}"
-    day:     "{{ item.day     | default(omit) }}"
-    weekday: "{{ item.weekday | default(omit) }}"
+    name:    "Backup job: {{ item.key }}"
+    minute:  "{{ item.value.minute  | default(15) }}"
+    hour:    "{{ item.value.hour    | default(4) }}"
+    day:     "{{ item.value.day     | default(omit) }}"
+    weekday: "{{ item.value.weekday | default(omit) }}"
     user:    "{{ gobackup_user }}"
-    job:     "{{ gobackup_bin_path }}/gobackup perform --model {{ item.name }}"
-  with_items:
-    - "{{ gobackup_cron }}"
-  when: gobackup_cron | length > 0
+    job:     "{{ gobackup_bin_path }}/gobackup perform --model {{ item.key }}"
+  with_dict: gobackup_cron
