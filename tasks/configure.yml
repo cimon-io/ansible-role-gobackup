@@ -26,4 +26,4 @@
     weekday: "{{ item.value.weekday | default(omit) }}"
     user:    "{{ gobackup_user }}"
     job:     "{{ gobackup_bin_path }}/gobackup perform --model {{ item.key }}"
-  with_dict: gobackup_cron
+  with_dict: "{{ gobackup_cron }}"
