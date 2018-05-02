@@ -59,11 +59,11 @@ The cron job can include the following parameters:
 
 ```yaml
 gobackup_cron:
-  name: model_name_here
-  minute:
-  hour:
-  day:
-  weekday:
+  model_name:
+    minute:
+    hour:
+    day:
+    weekday:
 ```
 
 ### Databases
