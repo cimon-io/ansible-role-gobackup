@@ -1,9 +1,10 @@
 ---
 galaxy_info:
+  role_name: gobackup
   author: Eugene Ignatov
   description: Install and configure gobackup
   license: MIT
-  min_ansible_version: 2.4
+  min_ansible_version: 2.6
   platforms:
   - name: Ubuntu
     versions:

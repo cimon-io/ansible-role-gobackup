@@ -4,6 +4,7 @@
     url: "{{ gobackup_url }}"
     dest: "/tmp/gobackup.tar.gz"
     owner: "{{ gobackup_user }}"
+  become: True
   become_user: "{{ gobackup_user }}"
 
 - name: "install gobackup"
@@ -13,3 +14,4 @@
     dest: "{{ gobackup_bin_path }}"
     mode: 0755
     owner: root
+  become: True

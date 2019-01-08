@@ -8,6 +8,7 @@
   with_items:
     - "{{ gobackup_data_path }}"
     - "{{ gobackup_config_path }}"
+  become: True
 
 - name: "configure backup models"
   template:
@@ -16,6 +17,7 @@
     owner: "{{ gobackup_user }}"
     group: "{{ gobackup_user }}"
     mode:  0600
+  become: True
 
 - name: "configure cron"
   cron:
@@ -27,3 +29,4 @@
     user:    "{{ gobackup_user }}"
     job:     "{{ gobackup_bin_path }}/gobackup perform --model {{ item.key }}"
   with_dict: "{{ gobackup_cron }}"
+  become: True

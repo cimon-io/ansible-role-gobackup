@@ -1,6 +1,6 @@
 ---
 gobackup_user: "deploy"
-gobackup_version: "0.7.0"
+gobackup_version: "0.7.2"
 gobackup_url: "https://github.com/huacnlee/gobackup/releases/download/{{ gobackup_version }}/gobackup-linux-amd64.tar.gz"
 
 gobackup_bin_path: "/usr/local/bin"
